@@ -53,7 +53,7 @@ const Manager = () => {
             <div className='relative'>
               <input value={form.password} onChange={handleChange} placeholder="Enter Password" className='rounded-full border border-green-500 w-full p-3 py-1' type="text" name='password' />
               <span className='absolute top-[3px] right-[1px] cursor-pointer' onClick={showPassword}>
-                <img ref={ref} className="p-1" width={29} src="public/eye.png" alt="eye" />
+                <img ref={ref} className="p-1" width={29} src="/eye.png" alt="eye" />
               </span>
             </div>
 
