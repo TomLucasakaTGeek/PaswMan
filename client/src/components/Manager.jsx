@@ -19,9 +19,9 @@ const Manager = () => {
   const showPassword = () => {
     alert("show the password")
     if (ref.current.src.includes('public/hide.png')) {
-      ref.current.src = "public/eye.png"
+      ref.current.src = "/eye.png"
     } else {
-      ref.current.src = 'public/hide.png'
+      ref.current.src = '/hide.png'
     }
   }
 
