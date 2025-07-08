@@ -1,5 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { ToastContainer, toast } from 'react-toastify'
+import { v4 as uuid4 } from 'uuid';
+import 'react-toastify/dist/ReactToastify.css'
 
 const Manager = () => {
   const ref = useRef()
@@ -45,9 +47,24 @@ const Manager = () => {
   }
 
   const savePassword = () => {
-    setPasswordArray([...passwordArray, form])
-    localStorage.setItem("passwords", JSON.stringify([...passwordArray, form]))
+    setPasswordArray([...passwordArray, {...form, id: uuid4()}])
+    localStorage.setItem("passwords", JSON.stringify([...passwordArray, {...form, id: uuid4()}]))
     console.log(passwordArray)
+  }
+
+  const editPassword = (id) => {
+    console.log("Editing Password with id", id)
+    setform(passwordArray.filter(i=>i.id === id)[0])
+    setPasswordArray(passwordArray.filter(item=>item.id !== id))
+  }
+
+  const deletePassword = (id) => {
+    console.log("Deleting Password with id", id)
+    let confirm = confirm("Do you want to deete this password ?")
+    if ( confirm ) {
+      setPasswordArray(passwordArray.filter(item=>item.id !== id))
+      localStorage.setItem("passwords", JSON.stringify(passwordArray.filter(item=>item.id !== id)))
+    }
   }
 
   const handleChange = (e) => {
@@ -162,7 +179,8 @@ const Manager = () => {
                     </div>
                   </td>
                   <td className='justify-center py-2 border-white text-center'>
-                      <span className=' lordiconcopy cursor-pointer'>
+                      <span className=' lordiconcopy cursor-pointer'
+                      onClick={()=>{editPassword(item.id)}}>
                         <lord-icon
                           style={{
                             "width" :"25px", 
@@ -171,7 +189,8 @@ const Manager = () => {
                           src="https://cdn.lordicon.org/gwlusjdu.json"
                           trigger="hover"></lord-icon>
                       </span>
-                      <span className=' lordiconcopy cursor-pointer'>
+                      <span className=' lordiconcopy cursor-pointer'
+                      onClick={()=>{deletePassword(item.id)}}>
                         <lord-icon
                           style={{
                             "width" :"25px",
