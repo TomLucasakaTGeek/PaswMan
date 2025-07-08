@@ -105,6 +105,7 @@ const Manager = () => {
                 <th className='py-2'>Site</th>
                 <th className='py-2'>Username</th>
                 <th className='py-2'>Password</th>
+                <th className='py-2'>Actions</th>
               </tr>
             </thead>
             <tbody className='bg-green-100'>
@@ -127,7 +128,7 @@ const Manager = () => {
                       </div>
                     </div>
                   </td>
-                  <td className='justify-center py-2 border-white text-center w-32'>
+                  <td className='py-2 border-white text-center w-32'>
                     <div className='flex items-center justify-center'>
                       <span>{item.username}</span>
                       <div className='lordiconcopy size-7 cursor-pointer' onClick={() => { copyText(item.username) }}>
@@ -144,7 +145,7 @@ const Manager = () => {
                       </div>
                     </div>
                   </td>
-                  <td className='flex items-center justify-center  py-2 border-white text-center w-32'>
+                  <td className='py-2 border-white text-center w-32'>
                     <div className='flex items-center justify-center'>
                       <span>{item.password}</span>
                       <div className='lordiconcopy size-7 cursor-pointer' onClick={() => { copyText(item.password) }}>
@@ -160,8 +161,27 @@ const Manager = () => {
                       </div>
                     </div>
                   </td>
+                  <td className='justify-center py-2 border-white text-center'>
+                      <span className=' lordiconcopy cursor-pointer'>
+                        <lord-icon
+                          style={{
+                            "width" :"25px", 
+                            "height":"25px"
+                          }}
+                          src="https://cdn.lordicon.org/gwlusjdu.json"
+                          trigger="hover"></lord-icon>
+                      </span>
+                      <span className=' lordiconcopy cursor-pointer'>
+                        <lord-icon
+                          style={{
+                            "width" :"25px",
+                            "height":"25px"
+                            }}
+                          src="https://cdn.lordicon.org/skkahier.json"
+                          trigger="hover"></lord-icon>
+                      </span>
+                  </td>
                 </tr>
-
               })}
             </tbody>
           </table>}
